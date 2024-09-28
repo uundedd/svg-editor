@@ -1,0 +1,2 @@
+<label *ngIf="!!label">{{label}}</label>
+<input type="text" pInputText [ngModel]="value" (ngModelChange)="valueChange($event)" />

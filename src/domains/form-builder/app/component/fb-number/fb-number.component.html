@@ -1,0 +1,7 @@
+<label *ngIf="!!label">{{label}}</label>
+<p-inputNumber 
+    [ngModel]="value" (ngModelChange)="valueChange($event)"
+    mode="decimal" 
+    [min]="min" 
+    [max]="max" /> 
+
