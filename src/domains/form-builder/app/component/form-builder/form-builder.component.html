@@ -1,0 +1,7 @@
+<form [formGroup]="formGroupService.rootGroup" (ngSubmit)="onSubmit()">
+  <ng-content></ng-content>
+  <ng-container *ngIf="buttonLabel">
+    <p-button  type="submit" label="{{buttonLabel}}" [disabled]="!formGroupService.rootGroup.valid"  (onClick)="onSubmit()" />
+  </ng-container>
+</form>
+
