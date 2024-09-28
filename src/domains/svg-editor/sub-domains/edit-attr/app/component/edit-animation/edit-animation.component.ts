@@ -84,7 +84,7 @@ export class EditAnimationComponent {
         .attr('to', (b) => {
           return String(b?.to);
         })
-        .attr('repeatCount', (b) => {
+        .attr('repeatCount', () => {
           return 'indefinite';
         });
     }

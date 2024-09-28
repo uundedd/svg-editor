@@ -71,7 +71,7 @@ export class SelectorService {
     }
   }
 
-  private leaveHandler(event: MouseEvent) {
+  private leaveHandler() {
     this.liveElementHovered.next(null);
   }
 
@@ -141,7 +141,7 @@ export class SelectorService {
   getHoverElement() {
     this.activelistening();
     return this.elementHovered.pipe(
-      map(([previous, current]) => {
+      map(([, current]) => {
         return current;
       }),
     );

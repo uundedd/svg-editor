@@ -129,7 +129,7 @@ export class LayerManagerService implements LayerManager {
     goldenLayout?.addComponent(name);
   }
 
-  async removeComponent(name: string) {
+  async removeComponent() {
     const layout = await this.goldenLayout;
     layout.clearComponentFocus;
   }

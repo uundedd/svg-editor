@@ -13,6 +13,7 @@ import { SvgEditorService } from '../../service/svg-editor.service';
 import { addTagPlugin } from '../../../sub-domains/add-tag/app/plugin/add-tag.plugin';
 import * as d3 from 'd3';
 import { editAttrPlugin } from '../../../sub-domains/edit-attr/app/plugin/edit-attr.plugin';
+import { ComponentContainer } from 'golden-layout';
 
 @UntilDestroy()
 @Component({
@@ -30,6 +31,7 @@ import { editAttrPlugin } from '../../../sub-domains/edit-attr/app/plugin/edit-a
   styleUrl: './svg-editor.component.scss',
 })
 export class SvgEditorComponent implements LayerComponent, OnDestroy {
+  container: ComponentContainer | undefined;
   @ViewChild('svgMap', { static: false }) set svgMap(
     element: ElementRef<HTMLElement>,
   ) {
@@ -61,8 +63,6 @@ export class SvgEditorComponent implements LayerComponent, OnDestroy {
     private svgEditoService: SvgEditorService,
     svgPluginService: SvgEditorPluginRegistry,
   ) {
-    // eslint-disable-next-line @typescript-eslint/no-this-alias
-    const self = this;
     svgPluginService.setPlugin(infoAttrPlugin);
     svgPluginService.setPlugin(addTagPlugin);
     svgPluginService.setPlugin(editAttrPlugin);
@@ -98,7 +98,9 @@ export class SvgEditorComponent implements LayerComponent, OnDestroy {
     container.call(zoom as any);
   }
 
-  onAttach(): void {}
+  onAttach(container: ComponentContainer): void {
+    this.container = container;
+  }
 
   changeFile(event: { file: File[] }) {
     const svg = event.file?.[0];
