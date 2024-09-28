@@ -34,13 +34,7 @@ export class SvgEditorComponent implements LayerComponent, OnDestroy {
     element: ElementRef<HTMLElement>,
   ) {
     if (element?.nativeElement) {
-      const Container = d3.select(element.nativeElement);
-      const mainTag = Container.select('.svg-editor');
-
-      const zoom = d3.zoom().on('zoom', function (e) {
-        mainTag.attr('transform', e.transform);
-      });
-      Container.call(zoom as any);
+      this.addZoomEvent(element?.nativeElement);
     }
   }
   @ViewChild('svgEl', { static: false }) set svgEl(
@@ -92,6 +86,16 @@ export class SvgEditorComponent implements LayerComponent, OnDestroy {
         },
       },
     ]);
+  }
+
+  addZoomEvent(element: Element) {
+    const container = d3.select(element);
+    const mainTag = container.select('.svg-editor');
+
+    const zoom = d3.zoom().on('zoom', function (e) {
+      mainTag.attr('transform', e.transform);
+    });
+    container.call(zoom as any);
   }
 
   onAttach(): void {}
