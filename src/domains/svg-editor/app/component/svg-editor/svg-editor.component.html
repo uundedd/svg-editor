@@ -1,0 +1,23 @@
+ @defer {
+  <ng-container *ngIf="!svg else editor">
+    <app-form-builder (modelChange)="changeFile($event)" [buttonLabel]="''">
+      <app-fb-file-upload [name]="'file'" [accept]="'.svg'"></app-fb-file-upload>
+    </app-form-builder>
+  </ng-container>
+  <ng-template #editor>
+    <svg  #svgMap class="svg-container" >
+    
+        <g #svgEl class="svg-editor" 
+          
+          [innerHTML]="svg | safeHtml">
+          
+        </g>
+    
+      
+    </svg>
+    <app-svg-speed-dial></app-svg-speed-dial>
+  </ng-template>
+  
+} @loading (after 100ms; minimum 1s) {
+  waiting until load component ....
+}
