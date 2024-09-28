@@ -11,8 +11,9 @@ import { ButtonModule } from 'primeng/button';
 import { SvgEditorService } from '../../../../../app/service/svg-editor.service';
 import * as d3 from 'd3';
 import { ComponentContainer } from 'golden-layout';
-import { untilDestroyed } from '@ngneat/until-destroy';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
+@UntilDestroy()
 @Component({
   selector: 'app-add-tag',
   standalone: true,
