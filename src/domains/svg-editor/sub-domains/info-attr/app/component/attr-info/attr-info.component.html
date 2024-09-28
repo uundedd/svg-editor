@@ -1,0 +1,20 @@
+
+<p-dataView #dv [value]="attibutes">
+    <ng-template pTemplate="list" let-attributes>
+      <div class="card">
+        <div class="grid grid-nogutter">
+            <div  *ngFor="let item of attributes; let first = first" class="attr-item">
+                <div class="name">
+                  {{item.localName}}
+                </div>
+                <div class="value">
+                  {{item.value}}
+                </div>
+                <p-divider />
+            </div>
+        
+        </div>
+      </div>
+    </ng-template>
+</p-dataView>
+
