@@ -1,0 +1,16 @@
+@defer {
+    <app-form-builder [(model)]="value" [buttonLabel]="''" [label]="'TAG'">
+      <p-panel header="TAG">
+        <app-fb-string [label]="'text'" [name]="'text'"></app-fb-string>
+        <p-divider />
+        <app-fb-color [label]="'fill'" [name]="'fill'"></app-fb-color>
+        <p-divider />
+        <app-fb-number [label]="'font size'" [name]="'font-size'"></app-fb-number>  
+        <p-divider />
+        <p-button  type="submit" label="ADD" (onClick)="submit()" />
+      </p-panel>      
+    </app-form-builder>
+} @loading (after 100ms; minimum 1s) {
+  waiting until load component ....
+}
+
