@@ -1,0 +1,37 @@
+
+
+@defer {
+<div class="container">
+  <p-button  type="submit" label="REMOVE" (onClick)="removeElement()" />
+  <p-divider />
+  <app-form-builder [(model)]="value" [buttonLabel]="''" [label]="'Edit ATTRIBUTES'">
+      <p-panel header="Edit ATTRIBUTES">
+        @for (attr of attibutes; track attr.key) {
+          @switch (attr.type) {
+              @case ("text") {
+                  <app-fb-string [label]="attr.key" [name]="attr.key"></app-fb-string>
+              }
+              @case ("color") {
+                  <app-fb-color [label]="attr.key" [name]="attr.key"></app-fb-color>
+              }
+              @case ("number") {
+                  <app-fb-number [label]="attr.key" [name]="attr.key"></app-fb-number>  
+              }
+          }
+          <p-divider />
+        } @empty {
+          <li>please select a svg element</li>
+        }
+        @if(attibutes.length > 0){
+          <p-button  type="submit" label="SAVE" (onClick)="submit()" />
+        }
+      </p-panel>      
+    </app-form-builder>
+    <app-edit-animation>
+    </app-edit-animation>
+</div>
+  
+} @loading (after 100ms; minimum 1s) {
+  waiting until load component ....
+}
+

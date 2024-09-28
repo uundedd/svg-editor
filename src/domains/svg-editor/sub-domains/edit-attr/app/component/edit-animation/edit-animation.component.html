@@ -1,0 +1,22 @@
+@defer {
+
+  <p-panel header="ANIMATION">
+        <app-form-builder [(model)]="this.animation" [buttonLabel]="''" [label]="'ANIMATION'">    
+          <app-fb-string [label]="'attributeName'" [name]="'attributeName'"></app-fb-string>
+          <p-divider />
+          <app-fb-number [label]="'begin'" [name]="'begin'"></app-fb-number>  
+          <p-divider />
+          <app-fb-number [label]="'dur'" [name]="'dur'"></app-fb-number>  
+          <p-divider />
+          <app-fb-string [label]="'from'" [name]="'from'"></app-fb-string>
+          <p-divider />
+          <app-fb-string [label]="'to'" [name]="'to'"></app-fb-string>
+          <p-divider />
+          <p-button  type="submit" label="SAVE" (onClick)="submit()" />
+        </app-form-builder>
+  </p-panel>          
+
+  
+} @loading (after 100ms; minimum 1s) {
+  waiting until load component ....
+}
